@@ -1,5 +1,5 @@
 {
-  description = "A bleeping fast build tool for Scala";
+  description = "A bleeping fast scala build tool!";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
