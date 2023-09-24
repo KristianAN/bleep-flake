@@ -51,6 +51,7 @@
 
             installShellCompletion --cmd bleep \
               --bash <(bleep install-completions-bash) \
+              --zsh <(bleep install-completions-zsh) \
           '';
 
           meta = with pkgs.lib; {
