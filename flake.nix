@@ -50,8 +50,8 @@
             PATH="./temp:$PATH"
 
             installShellCompletion --cmd bleep \
-              --bash <(bleep install-completions-bash) \
-              --zsh <(bleep install-completions-zsh) \
+              --bash <(bleep install-tab-completions-bash) \
+              --zsh <(bleep install-tab-completions-zsh) \
           '';
 
           meta = with pkgs.lib; {
