@@ -15,8 +15,13 @@ Most of the code in this flake is taken from the scala-cli [nixpkg](https://gith
 Only tested to work on nixOS and i have not tested if bash-completions are installed properly yet as I don't use bash... 
 
 # Current limitations 
-Bleep can not manage it's own versions using this flake, see [bug](https://github.com/KristianAN/bleep-flake/issues/2). 
-Bleep can not manage JDKs with this flake for the same reason as above. Define the JDK in your flake for now. 
+There are a couple of limitations because Nix and Bleep try to solve the same issue.
+
+ - Bleep can not manage it's own versions using this flake, see [bug](https://github.com/KristianAN/bleep-flake/issues/2). 
+ - Bleep can not manage JDKs with this flake for the same reason as above. Define the JDK in your flake for now.
+
+These are really non-issues when you are using Nix, but it does mean that you can't build bleep with bleep as bleep requires the JDK version to be defined in the bleep.yml.
+
 # Adding it to your flake
 
 It's as simple as adding this flake as an inputs and defining bleep in the outputs
