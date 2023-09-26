@@ -10,7 +10,7 @@
     flake-utils.lib.eachDefaultSystem (system: {
       defaultPackage = let
         pkgs = import nixpkgs { inherit system; };
-        version = "0.0.2";  # Define the version here
+        version = "0.0.3";  # Define the version here
         suffix = if pkgs.lib.strings.hasInfix "darwin" system then "-apple-darwin" else "-pc-linux";
         in pkgs.stdenv.mkDerivation rec {
           name = "bleep-${version}";
@@ -23,7 +23,7 @@
           src =
             pkgs.fetchurl {
               url = "https://github.com/oyvindberg/bleep/releases/download/v${version}/bleep-x86_64${suffix}.tar.gz";
-              sha256 = "sha256-iu0wV8cFHf74qZKzvM7n4D8wH5ZPBU7U3VV/Nz8ESZw=";
+              sha256 = "sha256-TbE5D9xHmgskchSj2sT3hTSAJnLsq9ecIEPbiVjdKqQ=";
             };
 
           unpackPhase = ''
