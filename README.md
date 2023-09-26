@@ -14,8 +14,9 @@ Most of the code in this flake is taken from the scala-cli [nixpkg](https://gith
 
 Only tested to work on nixOS and i have not tested if bash-completions are installed properly yet as I don't use bash... 
 
-NB! Bleep can not manage it's own versions using this flake, see [bug](https://github.com/KristianAN/bleep-flake/issues/2). 
-
+# Current limitations 
+Bleep can not manage it's own versions using this flake, see [bug](https://github.com/KristianAN/bleep-flake/issues/2). 
+Bleep can not manage JDKs with this flake for the same reason as above. Define the JDK in your flake for now. 
 # Adding it to your flake
 
 It's as simple as adding this flake as an inputs and defining bleep in the outputs
@@ -24,7 +25,7 @@ Example:
 
 ```nix
 {
-  description = "My flake";
+  description = "bleep";
 
   inputs = {
      nixpkgs.url = "github:NixOS/nixpkgs";
@@ -37,14 +38,19 @@ Example:
       let pkgs = import nixpkgs { inherit system; };
           bleep = bleepSrc.defaultPackage.${system}; # Your bleep system binary
 
+          jdk = pkgs.jdk17_headless;
+
+          jvmHook = ''
+            JAVA_HOME="${jdk}"
+          '';
       in {
         devShell = pkgs.mkShell rec {
           buildInputs = [
             bleep # Bleep bleep
-            pkgs.scala-cli
+            jdk
           ];
+          shellHook = jvmHook;          
         };
       });
 }
-```
 
