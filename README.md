@@ -12,7 +12,9 @@ However as it is quite new it is not packaged for nixpkgs. Running GraalVM nativ
 
 Most of the code in this flake is taken from the scala-cli [nixpkg](https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/tools/build-managers/scala-cli/default.nix)
 
-Only tested to work on nixOS and i have not tested if bash-completions are installed properly yet as I don't use bash...
+Only tested to work on nixOS and i have not tested if bash-completions are installed properly yet as I don't use bash... 
+
+NB! Bleep can not manage it's own versions using this flake, see [bug](https://github.com/KristianAN/bleep-flake/issues/2). 
 
 # Adding it to your flake
 
