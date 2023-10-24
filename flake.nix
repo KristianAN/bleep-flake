@@ -18,7 +18,7 @@
           nativeBuildInputs = [ pkgs.installShellFiles pkgs.makeWrapper ]
             ++ pkgs.lib.optional pkgs.stdenv.isLinux pkgs.autoPatchelfHook;
 
-          buildInputs = [ pkgs.glibc pkgs.zlib pkgs.stdenv.cc.cc ];
+          buildInputs = [ pkgs.glibc pkgs.zlib pkgs.stdenv.cc.cc coreutils ];
 
           src =
             pkgs.fetchurl {
