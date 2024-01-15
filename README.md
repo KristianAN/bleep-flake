@@ -57,5 +57,5 @@ Example:
         };
       });
 }
-
+```
 If you don't want to add this as a input in your flake you can look at the bleep.nix.example file. Create a nix file in your directory, copy the contents into it, then import the file into your build.
