@@ -59,3 +59,15 @@ Example:
 }
 ```
 If you don't want to add this as a input in your flake you can look at the bleep.nix.example file. Create a nix file in your directory, copy the contents into it, then import the file into your build.
+
+# Importing from sbt
+If you want to import from sbt you will need to edit your flake.nix so that sbt has the required tools in scope by overriding the postFixup attribute
+```nix
+ sbt = pkgs.sbt.overrideAttrs (oldAttrs: {
+    nativeBuildInputs = oldAttrs.nativeBuildInputs or [] ++ [ pkgs.makeWrapper ];
+    postFixup = ''
+      wrapProgram $out/bin/sbt --prefix PATH : "${pkgs.coreutils}/bin:${pkgs.gnugrep}/bin:${pkgs.gnused}/bin"
+    '';
+  });
+ ```
+Now you can run bleep import --sbt-path sbt
