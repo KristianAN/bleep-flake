@@ -70,3 +70,4 @@ If you want to import from sbt you will need to edit your flake.nix so that sbt 
     '';
   });
  ```
+Now you can run bleep import --sbt-path sbt
